@@ -1,0 +1,10 @@
+    <div><%= flash[:notice] %></div>
+
+    <table>
+        <tr><th><h3>title:</h3><th><td><%= @book.title %></td></tr>
+        <tr><th><h3>body:</h3><th><td><p><%= @book.body %></p></td></tr>
+    </table>
+
+    <%= link_to "edit", edit_book_path(@book.id) %>
+    <%= " |" %>
+    <%= link_to "estroy", book_path(@book.id), method: :delete %>
