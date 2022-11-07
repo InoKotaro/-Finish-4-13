@@ -1,11 +1,22 @@
-<h1>Editing Book</h1>
-<%= form_with model: @book, url: '/books' do |f| %>
-    <p class= edit-titley>title</p>
-	<%= f.text_area :title %>
-
-    <p class= edit-body>body</p>
-	<%= f.text_area :body %>
-
-	<div class= edit-buttom>
-    <%= f.submit 'Update Book' %>
+<% if @book.errors.any? %>
+	<%= @book.errors.count %>errors prohibited this book from being saved:
+		<ul>
+			<% @book.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
 <% end %>
+
+<div class= "edit">
+	<h1>Editing Book</h1>
+	<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+    	<p class= edit-titley>title</p>
+		<%= f.text_area :title %>
+
+    	<p class= edit-body>body</p>
+		<%= f.text_area :body %>
+
+		<div class= edit-buttom>
+    	<%= f.submit 'Update Book' %>
+	<% end %>
+</div>
